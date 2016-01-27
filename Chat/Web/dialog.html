@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<!--script language="javascript" src="home.js"></script-->
+<script language="javascript" src="js/login.js"></script>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>XGD物联网测试平台</title>
+<link rel="stylesheet" type="text/css" href="css/theme.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<script>
+	function getname()
+	{
+		window.returnValue="test";
+	}	
+</script>
+</head>
+
+<body>
+	
+	<form action="getname()" method="get">
+		<p>用户名: <input type="text" id="name" name="name" /></p>
+		<p>密码: <input type="text" id="password" name="password" /></p>
+		<input type="submit" value="确认" />
+	</form>
+</body>
+</html>
