@@ -61,8 +61,16 @@
             // 服务端ping客户端
             case 'ping':
                 ws.send('{"type":"pong"}');
-                break;;
+                break;
             // 登录 更新用户列表
+			case 'ledon':
+				document.getElementById('led1').src = './img/led_on.png';
+	
+                break;
+			case 'ledoff':
+				document.getElementById('led1').src = './img/led_off.png';
+	
+                break;
             case 'login':
                 //{"type":"login","client_id":xxx,"client_name":"xxx","client_list":"[...]","time":"xxx"}
 				/*
@@ -129,32 +137,14 @@
 	
 	// 提交对话
     function ledSubmit(tmp) {
-	  
-      //var input = document.getElementById("textarea");
-	  switch_led(tmp);
-	  
-      //var to_client_id = $("#client_list option:selected").attr("value");
-      //var to_client_name = $("#client_list option:selected").text();
-	  
-	    if((g_led_flag & 0x01) || (g_led_flag & 0x02) || (g_led_flag & 0x04))
+		if(tmp>1)
+			return;
+		switch_led(tmp);
+	    if((g_led_flag & 0x01))
 			 ws.send('{"type":"ledon","to_client_id":"all","to_client_name":"led","content":"ledon"}');
 	    else
 			ws.send('{"type":"ledoff","to_client_id":"all","to_client_name":"led","content":"ledoff"}');
 		//alert("led flag = "+g_led_flag);
-		/*
-		if(led_flag & 0x02)
-			document.getElementById('led2').src = './img/led_on.png';
-		else
-			document.getElementById('led2').src = './img/led_off.png';
-
-		if(led_flag & 0x04)
-			document.getElementById('led3').src = './img/led_on.png';
-		else
-			document.getElementById('led3').src = './img/led_off.png';
-		*/
-      //ws.send('{"type":"say","to_client_id":"all","to_client_name":"led","content":"ledon"}');
-      //input.value = "";
-      //input.focus();
     }
 	
     // 刷新用户列表框
